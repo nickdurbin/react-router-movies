@@ -15,7 +15,7 @@ const App = () => {
     <div>
       <NavLink to='/savedList' activeClassName="activeNavButton"><SavedList list={savedList} /></NavLink>
       <Route exact path='/' component={MovieList}/>
-      <Route path='/movies/:id' render={props => <Movie savedList={savedList} />} />
+      <Route path='/movies/:id' render={props => <Movie {...props} addToSavedList={addToSavedList} />} />
     </div>
   );
 };
