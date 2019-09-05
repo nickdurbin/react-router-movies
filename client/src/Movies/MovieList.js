@@ -18,7 +18,9 @@ const MovieList = props => {
     }
     
     getMovies();
+  }, []);
 
+  useEffect(() => {
     const postMovies = () => {
       axios
         .post(`http://localhost:5000/api/movies`, {
@@ -38,11 +40,11 @@ const MovieList = props => {
         .catch(error => {
           console.log(error, "Your movie wasn't added.")
         })
-    }
+    } 
 
     postMovies();
   }, []);
-  
+
   return (
     <div className="movie-list">
       {movies.map(movie => (
