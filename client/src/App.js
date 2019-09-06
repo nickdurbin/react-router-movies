@@ -8,6 +8,7 @@ const App = () => {
   const [savedList, setSavedList] = useState( [] );
 
   const addToSavedList = movie => {
+    (!savedList.includes(movie))&&
     setSavedList( [...savedList, movie] );
   };
 
