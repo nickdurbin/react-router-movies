@@ -41,11 +41,11 @@ const MovieList = props => {
         .catch(error => {
           console.log(error, "Your movie wasn't added.")
         })
-    }
+    } 
 
     postMovies();
   }, []);
-  
+
   return (
     <div className="movie-list">
       {movies.map(movie => (
