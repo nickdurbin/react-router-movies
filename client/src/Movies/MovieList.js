@@ -5,6 +5,7 @@ import MovieCard from './MovieCard';
 
 const MovieList = props => {
   const [movies, setMovies] = useState([])
+
   useEffect(() => {
     const getMovies = () => {
       axios
@@ -18,7 +19,9 @@ const MovieList = props => {
     }
     
     getMovies();
+  }, []);
 
+  useEffect(() => {
     const postMovies = () => {
       axios
         .post(`http://localhost:5000/api/movies`, {
