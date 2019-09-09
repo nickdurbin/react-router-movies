@@ -4,11 +4,11 @@ import axios from 'axios';
 function AddMovie() {
   const [newMovie, setNewMovie] = useState();
 
-  const onChange = event => {
+  const handleChange = event => {
     setNewMovie(event.target.value);
   };
 
-  const onSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
     console.log(newMovie);
   }
@@ -39,8 +39,26 @@ function AddMovie() {
   }, []);
 
   return (
-    <div>
-      
+    <div className="movieForm">
+      <form onSubmit={event => handleSubmit(event)}>
+        <label>
+          Title:
+          <input type="text" onChange={event => handleChange(event)} />
+        </label>
+        <label>
+          Director:
+          <input type="text" onChange={event => handleChange(event)} />
+        </label>
+        <label>
+          Metascore:
+          <input type="text" onChange={event => handleChange(event)} />
+        </label>
+        <label>
+          Stars:
+          <input type="text" onChange={event => handleChange(event)} />
+        </label>
+        <button>Submit!</button>
+    </form>
     </div>
   )
 }
