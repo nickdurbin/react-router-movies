@@ -66,7 +66,7 @@ body {
   color: white;
 }
 
-.home-button, .add-movie {
+.home-button, .add-movie, .login {
   margin: 5px 0;
   padding: 5px 10px;
   background-color: lightskyblue;
@@ -74,7 +74,7 @@ body {
   cursor: pointer;
 }
 
-.home-button:hover, .add-movie:hover {
+.home-button:hover, .add-movie:hover, .login:hover {
   transform: scale(1.05);
 }
 
