@@ -17,15 +17,11 @@ function AddMovie() {
     const postMovies = () => {
       axios
         .post(`http://localhost:5000/api/movies`, {
-          id: 6,
-          title: "Forrest Gump",
-          director: "Robert Zemeckis",
-          metascore: 86,
-          stars: [
-            "Tom Hanks",
-            "Sally Field",
-            "Robin Wright"
-          ]
+          id: '',
+          title: "",
+          director: "",
+          metascore: '',
+          stars: []
         })
         .then(response => {
           console.log(response, "Movie added.")
