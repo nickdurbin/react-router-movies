@@ -8,6 +8,7 @@ const SavedList = props => (
       <span className="saved-movie">{movie.title}</span>
     ))}
     <div className="home-button"><NavLink to='/' activeClassName="activeNavButton">Home</NavLink></div>
+    <div className="add-movie"><NavLink to='/addmovie' activeClassName="activeNavButton">Add Movie</NavLink></div>
   </div>
 );
 

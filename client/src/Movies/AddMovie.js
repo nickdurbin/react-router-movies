@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function AddMovie() {
   const [newMovie, setNewMovie] = useState({
-    id: undefined,
+    id: '6',
     title: "",
     director: "",
     metascore: '',
@@ -24,6 +24,7 @@ function AddMovie() {
       .then(response => {
         console.log(response.data, "Movie added.")
         setNewMovie(response.data);
+        setNewMovie(`${response.data.id}+1`);
       })
       .catch(error => {
         console.log(error, "Your movie wasn't added.")
@@ -32,7 +33,7 @@ function AddMovie() {
 
   return (
     <div className="movieForm">
-      <form name="id" onSubmit={event => handleSubmit(event)}>
+      <form name="id" value={newMovie.id} onSubmit={event => handleSubmit(event)} onChange={event => handleChange(event)}>
         <label>
           Title:
           <input type="text" name="title" value={newMovie.title} onChange={event => handleChange(event)} />
