@@ -10,6 +10,7 @@ const SavedList = props => (
     <div className="buttonContainer">
       <div className="home-button"><NavLink to='/' activeClassName="activeNavButton">Home</NavLink></div>
       <div className="add-movie"><NavLink to='/addmovie' activeClassName="activeNavButton">Add Movie</NavLink></div>
+      <div className="login"><NavLink to='/login' activeClassName="activeNavButton">Login</NavLink></div>
     </div>
   </div>
 );
