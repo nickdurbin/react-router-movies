@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function AddMovie() {
   const [newMovie, setNewMovie] = useState({
-    id: '6',
+    id: `${response.data.id}+1`,
     title: "",
     director: "",
     metascore: '',
@@ -19,24 +19,16 @@ function AddMovie() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(newMovie);
-  }
-
-  useEffect(() => {
-    const postMovies = () => {
-      axios
-        .post(`http://localhost:5000/api/movies`)
-        .then(response => {
-          console.log(response.data, "Movie added.")
-          setNewMovie(response.data);
-        })
-        .catch(error => {
-          console.log(error, "Your movie wasn't added.")
-        })
-    } 
-
-    postMovies();
-  }, []);
+    axios
+      .post(`http://localhost:5000/api/movies`, newMovie)
+      .then(response => {
+        console.log(response.data, "Movie added.")
+        setNewMovie(response.data);
+      })
+      .catch(error => {
+        console.log(error, "Your movie wasn't added.")
+      })
+  } 
 
   return (
     <div className="movieForm">
