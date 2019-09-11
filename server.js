@@ -62,7 +62,15 @@ app.get('/api/movies/:id', (req, res) => {
 });
 
 app.post('/api/movies', (req, res) => {
-	if (req.body.id !== undefined) movies.push(req.body);
+	if (req.body.id !== undefined) {
+		const newPost = {
+			id: movies.length + 1,
+			...req.body
+		}
+		
+		movies.push(req.newPost)
+	};
+
 	res.status(201).json(movies);
 });
 

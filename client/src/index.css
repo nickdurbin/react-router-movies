@@ -75,3 +75,27 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.form-container {
+  width: 98%;
+  margin: auto;
+}
+.form-heading {
+  text-align: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-input {
+  margin: 10px 0;
+  line-height: 2;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  width: 60%;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
