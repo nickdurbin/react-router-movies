@@ -1,75 +1,57 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../index.css';
 
-function AddMovie(props) {
-
-  const [movie, setMovie] = useState({
-    id: 6,
-    title: '',
-    director: '',
+function AddMovie() {
+  const [newMovie, setNewMovie] = useState({
+    id: '',
+    title: "",
+    director: "",
     metascore: '',
-    stars: [],
-  })
+    stars: []
+  }); 
 
-  const handleMovie = (event) => {
-    const { name, value } = event.target;
-    setMovie({
-      ...movie,
-      [name]: value
-    })
-  }
+  const handleChange = event => {
+    setNewMovie({
+      ...newMovie,
+      [event.target.name]: event.target.value
+    });
+  };
 
-  const postMovies = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
     axios
-    .post(`http://localhost:5000/api/movies`, movie)
-    .then(response => {
-      response.setMovie({ id: movie.id + 1, title: '', director: '', metascore: '', stars: [] })
-    })
-    .catch(error => {
-      console.log(error, "Your movie wasn't added.")
-    })
+      .post(`http://localhost:5000/api/movies`, newMovie)
+      .then(response => {
+        console.log(response.data, "Movie added.")
+        setNewMovie(response.data);
+      })
+      .catch(error => {
+        console.log(error, "Your movie wasn't added.")
+      })
   } 
 
   return (
-    <div className="form-container">
-      <h2 className="form-heading">Add Your Favorite movie</h2>
-      <form className="form" onSubmit={(e) => postMovies(e)}>
-        <input
-          type="text"
-          value={movie.title}
-          name="title"
-          placeholder="Title"
-          onChange={(event) => handleMovie(event)}
-          className="form-input"
-        />
-        <input
-          type="text"
-          value={movie.director}
-          name="director"
-          placeholder="Director"
-          onChange={(event) => handleMovie(event)}
-          className="form-input"
-        />
-        <input
-          type="text"
-          value={movie.metascore}
-          name="metascore"
-          placeholder="Metascore"
-          onChange={(event) => handleMovie(event)}
-          className="form-input"
-        />
-        <textarea
-          type="text"
-          value={movie.stars}
-          name="stars"
-          placeholder="Stars"
-          onChange={(event) => handleMovie(event)}
-          className="form-input"
-        />
-        <button className="form-submit">Submit</button>
-      </form>
+    <div className="movieForm">
+      <form name="id" value={newMovie.id} onSubmit={event => handleSubmit(event)} onChange={event => handleChange(event)}>
+        <h1>Add Your Favorite Movie</h1>
+        <label>
+          Title:
+          <input type="text" name="title" value={newMovie.title} onChange={event => handleChange(event)} />
+        </label>
+        <label>
+          Director:
+          <input type="text" name="director" value={newMovie.director} onChange={event => handleChange(event)} />
+        </label>
+        <label>
+          Metascore:
+          <input type="text" name="metascore" value={newMovie.metascore} onChange={event => handleChange(event)} />
+        </label>
+        <label>
+          Stars:
+          <input type="text" name="stars" value={newMovie.stars} onChange={event => handleChange(event)} />
+        </label>
+        <button className="formButton">Submit</button>
+    </form>
     </div>
   )
 }
