@@ -28,8 +28,10 @@ const App = () => {
   }, []);
 
   const addToSavedList = movie => {
-    (!savedList.includes(movie))&&
-    setSavedList( [...savedList, movie] );
+    const present = savedList.find(el => el.title === movie.title)
+    if (!present) {
+      setSavedList( [...savedList, movie] );
+    } 
   };
 
   return (
